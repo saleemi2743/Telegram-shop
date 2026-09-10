@@ -1311,6 +1311,3 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
     },
 }
 # Force English for all new and existing users
-TRANSLATIONS["ru"] = TRANSLATIONS["en"]
-DEFAULT_LOCALE = "en"
-Show more lines
