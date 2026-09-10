@@ -1,7 +1,7 @@
 DEFAULT_LOCALE = "ru"
 
 TRANSLATIONS: dict[str, dict[str, str]] = {
-    "lru": {
+    "ru": {
         # === Common Buttons ===
         "btn.shop": "🏪 Магазин",
         "btn.search": "🔍 Поиск по каталогу",
@@ -538,7 +538,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "errors.invalid_user": "❌ Некорректный пользователь",
     },
 
-    "ru": {
+    "en": {
         # === Common Buttons ===
         "btn.shop": "🏪 Shop",
         "btn.search": "🔍 Search catalog",
