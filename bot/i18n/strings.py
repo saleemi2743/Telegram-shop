@@ -1,114 +1,349 @@
 DEFAULT_LOCALE = "en"
 
 TRANSLATIONS: dict[str, dict[str, str]] = {
-    "ru": {
+     "en": {
         # === Common Buttons ===
-        "btn.shop": "🏪 Магазин",
-        "btn.search": "🔍 Поиск по каталогу",
-        "btn.rules": "📜 Правила",
-        "btn.profile": "👤 Профиль",
-        "btn.support": "🆘 Поддержка",
-        "btn.channel": "ℹ Новостной канал",
-        "btn.admin_menu": "🎛 Панель администратора",
-        "btn.back": "⬅️ Назад",
-        "btn.to_menu": "🏠 В меню",
-        "btn.close": "✖ Закрыть",
-        "btn.buy": "🛒 Купить",
-        "btn.yes": "✅ Да",
-        "btn.no": "❌ Нет",
-        "btn.check": "🔄 Проверить",
-        "btn.check_subscription": "🔄 Проверить подписку",
-        "btn.pay": "💳 Оплатить",
-        "btn.check_payment": "🔄 Проверить оплату",
+        "btn.shop": "🏪 Shop",
+        "btn.search": "🔍 Search catalog",
+        "btn.rules": "📜 Rules",
+        "btn.profile": "👤 Profile",
+        "btn.support": "🆘 Support",
+        "btn.channel": "ℹ News channel",
+        "btn.admin_menu": "🎛 Admin panel",
+        "btn.back": "⬅️ Back",
+        "btn.to_menu": "🏠 Menu",
+        "btn.close": "✖ Close",
+        "btn.buy": "🛒 Buy",
+        "btn.yes": "✅ Yes",
+        "btn.no": "❌ No",
+        "btn.check": "🔄 Check",
+        "btn.check_subscription": "🔄 Check subscription",
+        "btn.check_payment": "🔄 Check payment",
+        "btn.pay": "💳 Pay",
         "btn.pay.crypto": "💎 CryptoPay",
         "btn.pay.stars": "⭐ Telegram Stars",
         "btn.pay.tg": "💸 Telegram Payments",
 
         # === Admin Buttons (user management shortcuts) ===
-        "btn.admin.view_profile": "👁 Посмотреть профиль",
-        "btn.admin.promote": "⬆️ Назначить администратором",
-        "btn.admin.demote": "⬇️ Снять администратора",
-        "btn.admin.replenish_user": "💸 Пополнить баланс",
-        "btn.admin.deduct_user": "💳 Списать с баланса",
-        "btn.admin.block": "🚫 Заблокировать",
-        "btn.admin.unblock": "✅ Разблокировать",
+        "btn.admin.view_profile": "👁 View profile",
+        "btn.admin.promote": "⬆️ Make admin",
+        "btn.admin.demote": "⬇️ Remove admin",
+        "btn.admin.replenish_user": "💸 Top up balance",
+        "btn.admin.deduct_user": "💳 Deduct from balance",
+        "btn.admin.block": "🚫 Block",
+        "btn.admin.unblock": "✅ Unblock",
 
         # === Titles / Generic Texts ===
-        "menu.title": "⛩️ Основное меню",
-        "profile.caption": "👤 <b>Профиль</b> — <a href='tg://user?id={id}'>{name}</a>",
-        "rules.not_set": "❌ Правила не были добавлены",
-
-        # === Subscription Flow ===
-        "subscribe.prompt": "Для начала подпишитесь на новостной канал",
-        "subscribe.open_channel": "Открыть канал",
+        "menu.title": "⛩️ Main menu",
+        "profile.caption": "👤 <b>Profile</b> — <a href='tg://user?id={id}'>{name}</a>",
+        "rules.not_set": "❌ Rules have not been added",
 
         # === Profile ===
-        "profile.referral_id": "👤 <b>Реферал</b> — <code>{id}</code>",
-        "btn.replenish": "💳 Пополнить баланс",
-        "btn.referral": "🎲 Реферальная система",
-        "btn.purchased": "🎁 Купленные товары",
+        "btn.replenish": "💳 Top up your balance",
+        "btn.referral": "🎲 Referral system",
+        "btn.purchased": "🎁 Purchased goods",
+        "profile.referral_id": "👤 <b>Referral</b> — <code>{id}</code>",
+
+        # === Subscription Flow ===
+        "subscribe.prompt": "First, subscribe to the news channel",
+        "subscribe.open_channel": "Open channel",
 
         # === Profile Info Lines ===
         "profile.id": "🆔 <b>ID</b> — <code>{id}</code>",
-        "profile.balance": "💳 <b>Баланс</b> — <code>{amount}</code> {currency}",
-        "profile.total_topup": "💵 <b>Всего пополнено</b> — <code>{amount}</code> {currency}",
-        "profile.purchased_count": "🎁 <b>Куплено товаров</b> — {count} шт",
-        "profile.registration_date": "🕢 <b>Дата регистрации</b> — <code>{dt}</code>",
+        "profile.balance": "💳 <b>Balance</b> — <code>{amount}</code> {currency}",
+        "profile.total_topup": "💵 <b>Total topped up</b> — <code>{amount}</code> {currency}",
+        "profile.purchased_count": "🎁 <b>Purchased items</b> — {count} pcs",
+        "profile.registration_date": "🕢 <b>Registered at</b> — <code>{dt}</code>",
 
         # === Referral ===
-        "referral.title": "💚 Реферальная система",
-        "referral.link": "🔗 Ссылка: https://t.me/{bot_username}?start={user_id}",
-        "referral.count": "Количество рефералов: {count}",
+        "referral.title": "💚 Referral system",
+        "referral.link": "🔗 Link: https://t.me/{bot_username}?start={user_id}",
+        "referral.count": "Referrals count: {count}",
         "referral.description": (
-            "📔 Реферальная система позволит Вам заработать деньги без всяких вложений. "
-            "Необходимо всего лишь распространять свою реферальную ссылку и Вы будете получать "
-            "{percent}% от суммы пополнений Ваших рефералов на Ваш баланс бота."
+            "📔 The referral system lets you earn without any investment. "
+            "Share your personal link and you will receive {percent}% of your referrals’ "
+            "top-ups to your bot balance."
         ),
-        "btn.view_referrals": "👥 Мои рефералы",
-        "btn.view_earnings": "💰 Мои поступления",
-        "btn.back_to_referral": "⬅️ К реферальной системе",
+        "btn.view_referrals": "👥 My referrals",
+        "btn.view_earnings": "💰 My earnings",
+        "btn.back_to_referral": "⬅️ Back to referral system",
 
-        "referrals.list.title": "👥 Ваши рефералы:",
-        "referrals.list.empty": "У вас пока нет активных рефералов",
-        "referrals.item.format": "ID: {telegram_id} | Принёс: {total_earned} {currency}",
+        "referrals.list.title": "👥 Your referrals:",
+        "referrals.list.empty": "You don't have any active referrals yet",
+        "referrals.item.format": "ID: {telegram_id} | Earned: {total_earned} {currency}",
 
-        "referral.earnings.title": "💰 Поступления от реферала <code>{telegram_id}</code> (<a href='tg://user?id={telegram_id}'>{name}</a>):",
-        "referral.earnings.empty": "От данного реферала <code>{id}</code> (<a href='tg://user?id={id}'>{name}</a>) пока не было поступлений",
-        "referral.earning.format": "{amount} {currency} | {date} | (с {original_amount} {currency})",
-        "referral.item.info": ("💰 Поступление номер: <code>{id}</code>\n"
-                               "👤 Реферал: <code>{telegram_id}</code> (<a href='tg://user?id={telegram_id}'>{name}</a>)\n"
-                               "🔢 Количество: {amount} {currency}\n"
-                               "🕘 Дата: <code>{date}</code>\n"
-                               "💵 С пополнения на {original_amount} {currency}"),
+        "referral.earnings.title": "💰 Earnings from referral <code>{telegram_id}</code> (<a href='tg://user?id={telegram_id}'>{name}</a>):",
+        "referral.earnings.empty": "No earnings from this referral <code>{id}</code> (<a href='tg://user?id={id}'>{name}</a>) yet",
+        "referral.earning.format": "{amount} {currency} | {date} | (from {original_amount} {currency})",
+        "referral.item.info": ("💰 Earning number: <code>{id}</code>\n"
+                               "👤 Referral: <code>{telegram_id}</code> (<a href='tg://user?id={telegram_id}'>{name}</a>)\n"
+                               "🔢 Amount: {amount} {currency}\n"
+                               "🕘 Date: <code>{date}</code>\n"
+                               "💵 From a deposit to {original_amount} {currency}"),
 
-        "all.earnings.title": "💰 Все ваши реферальные поступления:",
-        "all.earnings.empty": "У вас пока нет реферальных поступлений",
-        "all.earning.format": "{amount} {currency} от ID:{referral_id} | {date}",
+        "all.earnings.title": "💰 All your referral earnings:",
+        "all.earnings.empty": "You have no referral earnings yet",
+        "all.earning.format": "{amount} {currency} from ID:{referral_id} | {date}",
 
         "referrals.stats.template": (
-            "📊 Статистика реферальной системы:\n\n"
-            "👥 Активных рефералов: {active_count}\n"
-            "💰 Всего заработано: {total_earned} {currency}\n"
-            "📈 Общая сумма пополнений рефералов: {total_original} {currency}\n"
-            "🔢 Количество начислений: {earnings_count}"
+            "📊 Referral system statistics:\n\n"
+            "👥 Active referrals: {active_count}\n"
+            "💰 Total earned: {total_earned} {currency}\n"
+            "📈 Total referrals top-ups: {total_original} {currency}\n"
+            "🔢 Number of earnings: {earnings_count}"
         ),
 
         # === Admin: Main Menu ===
-        "admin.menu.main": "⛩️ Меню администратора",
-        "admin.menu.shop": "🛒 Управление магазином",
-        "admin.menu.goods": "📦 Управление позициями",
-        "admin.menu.categories": "📂 Управление категориями",
-        "admin.menu.users": "👥 Управление пользователями",
-        "admin.menu.broadcast": "📝 Рассылка",
-        "admin.menu.roles": "🛡 Управление ролями",
-        "admin.menu.rights": "Недостаточно прав",
+        "admin.menu.main": "⛩️ Admin Menu",
+        "admin.menu.shop": "🛒 Shop management",
+        "admin.menu.goods": "📦 Items management",
+        "admin.menu.categories": "📂 Categories management",
+        "admin.menu.users": "👥 Users management",
+        "admin.menu.broadcast": "📝 Broadcast",
+        "admin.menu.roles": "🛡 Role management",
+        "admin.menu.rights": "Insufficient permissions",
 
         # === Admin: Role Management ===
-        "admin.roles.list_title": "🛡 Роли системы:",
-        "admin.roles.create": "➕ Создать роль",
-        "admin.roles.edit": "✏️ Редактировать",
-        "admin.roles.delete": "🗑 Удалить",
-        "admin.roles.detail": "🛡 <b>Роль</b>: {name}\n📋 Права: {perms}\n👥 Пользователей: {users}",
+        "admin.roles.list_title": "🛡 System roles:",
+        "admin.roles.create": "➕ Create role",
+        "admin.roles.edit": "✏️ Edit",
+        "admin.roles.delete": "🗑 Delete",
+        "admin.roles.detail": "🛡 <b>Role</b>: {name}\n📋 Permissions: {perms}\n👥 Users: {users}",
+        "admin.roles.prompt_name": "Enter the role name (max 64 characters):",
+        "admin.roles.name_invalid": "⚠️ Invalid name (empty or exceeds 64 characters).",
+        "admin.roles.name_exists": "❌ A role with this name already exists",
+        "admin.roles.select_perms": "Select permissions for role \"{name}\":",
+        "admin.roles.confirm": "✅ Confirm",
+        "admin.roles.created": "✅ Role \"{name}\" created",
+        "admin.roles.updated": "✅ Role \"{name}\" updated",
+        "admin.roles.deleted": "✅ Role deleted",
+        "admin.roles.delete_confirm": "Are you sure you want to delete the role \"{name}\"?",
+        "admin.roles.delete_fail": "❌ Failed to delete: {error}",
+        "admin.roles.perm_denied": "⚠️ Insufficient permissions for this action",
+        "admin.roles.assign_prompt": "Select a role for user {id}:",
+        "admin.roles.assigned": "✅ Role {role} assigned to {name}",
+        "admin.roles.assigned_notify": "ℹ️ Your role has been set to: {role}",
+        "admin.roles.edit_name_prompt": "Enter the new role name (or /skip to keep current):",
+        "btn.admin.assign_role": "🛡 Assign role",
+
+        # === Admin: User Management ===
+        "admin.users.prompt_enter_id": "👤 Enter the user ID to view / edit data",
+        "admin.users.invalid_id": "⚠️ Please enter a valid numeric user ID.",
+        "admin.users.profile_unavailable": "❌ Profile unavailable (such user never existed)",
+        "admin.users.not_found": "❌ User not found",
+        "admin.users.cannot_change_owner": "You cannot change the owner’s role",
+        "admin.users.referrals": "👥 <b>User referrals</b> — {count}",
+        "admin.users.btn.view_referrals": "👥 User's referrals",
+        "admin.users.btn.view_earnings": "💰 User's earnings",
+        "admin.users.role": "🎛 <b>Role</b> — {role}",
+        "admin.users.set_admin.success": "✅ Role assigned to {name}",
+        "admin.users.set_admin.notify": "✅ You have been granted the ADMIN role",
+        "admin.users.remove_admin.success": "✅ Admin role revoked from {name}",
+        "admin.users.remove_admin.notify": "❌ Your ADMIN role has been revoked",
+        "admin.users.balance.topped": "✅ {name}'s balance has been topped up by {amount} {currency}",
+        "admin.users.balance.topped.notify": "✅ Your balance has been topped up by {amount} {currency}",
+        "admin.users.balance.deducted": "✅ Deducted {amount} {currency} from {name}'s balance",
+        "admin.users.balance.deducted.notify": "ℹ️ {amount} {currency} has been deducted from your balance",
+        "admin.users.balance.insufficient": "❌ Insufficient funds. Current balance: {balance} {currency}",
+        "admin.users.blocked.success": "🚫 User {name} has been blocked",
+        "admin.users.unblocked.success": "✅ User {name} has been unblocked",
+        "admin.users.cannot_block_owner": "❌ Cannot block the owner",
+        "admin.users.status.blocked": "🚫 <b>Status</b> — Blocked",
+
+        # === Admin: Shop Management Menu ===
+        "admin.shop.menu.title": "⛩️ Shop management",
+        "admin.shop.menu.statistics": "📊 Statistics",
+        "admin.shop.menu.logs": "📁 Show logs",
+        "admin.shop.menu.users": "👤 Users",
+        "admin.shop.menu.search_bought": "🔎 Search purchased item",
+
+        # === Admin: Categories Management ===
+        "admin.categories.menu.title": "⛩️ Categories management",
+        "admin.categories.add": "➕ Add category",
+        "admin.categories.rename": "✏️ Rename category",
+        "admin.categories.delete": "🗑 Delete category",
+        "admin.categories.prompt.add": "Enter a new category name:",
+        "admin.categories.prompt.delete": "Enter the category name to delete:",
+        "admin.categories.prompt.rename.old": "Enter the current category name to rename:",
+        "admin.categories.prompt.rename.new": "Enter the new category name:",
+        "admin.categories.add.exist": "❌ Category not created (already exists)",
+        "admin.categories.add.success": "✅ Category created",
+        "admin.categories.delete.not_found": "❌ Category not deleted (does not exist)",
+        "admin.categories.delete.success": "✅ Category deleted",
+        "admin.categories.rename.not_found": "❌ Category cannot be updated (does not exist)",
+        "admin.categories.rename.exist": "❌ Cannot rename (a category with this name already exists)",
+        "admin.categories.rename.success": "✅ Category \"{old}\" renamed to \"{new}\"",
+
+        # === Admin: Goods / Items Management (Add / List / Item Info) ===
+        "admin.goods.add_position": "➕ add item",
+        "admin.goods.add_item": "➕ Add product to item",
+        "admin.goods.update_position": "📝 change item",
+        "admin.goods.delete_position": "❌ delete item",
+        "admin.goods.show_items": "📄 show goods in item",
+        "admin.goods.add.prompt.name": "Enter the item name",
+        "admin.goods.add.name.exists": "❌ Item cannot be created (it already exists)",
+        "admin.goods.add.name.invalid": "⚠️ Invalid name (1–100 characters, no control characters).",
+        "admin.goods.add.prompt.description": "Enter item description:",
+        "admin.goods.add.prompt.price": "Enter item price (number in {currency}):",
+        "admin.goods.add.price.invalid": "⚠️ Invalid price. Please enter a number.",
+        "admin.goods.add.prompt.category": "Enter the category the item belongs to:",
+        "admin.goods.add.category.not_found": "❌ Item cannot be created (invalid category provided)",
+        "admin.goods.add.infinity.question": "Should this item have infinite values? (everyone will receive the same value copy)",
+        "admin.goods.add.values.prompt_multi": (
+            "Send product values one per message.\n"
+            "When finished, press “Add the listed goods”."
+        ),
+        "admin.goods.add.values.added": "✅ Value “{value}” added to the list ({count} pcs).",
+        "admin.goods.add.result.created": "✅ Item has been created.",
+        "admin.goods.add.result.added": "📦 Added values: <b>{n}</b>",
+        "admin.goods.add.result.skipped_db_dup": "↩️ Skipped (already in DB): <b>{n}</b>",
+        "admin.goods.add.result.skipped_batch_dup": "🔁 Skipped (duplicate in input): <b>{n}</b>",
+        "admin.goods.add.result.skipped_invalid": "🚫 Skipped (empty/invalid): <b>{n}</b>",
+        "admin.goods.add.single.prompt_value": "Enter a single value for the item:",
+        "admin.goods.add.single.empty": "⚠️ Value cannot be empty.",
+        "admin.goods.add.single.created": "✅ Item created, value added",
+        "btn.add_values_finish": "Add the listed goods",
+        "admin.goods.position.not_found": "❌ No goods (this item doesn't exist)",
+        "admin.goods.list_in_position.empty": "ℹ️ There are no goods in this item yet.",
+        "admin.goods.list_in_position.title": "Goods in item:",
+        "admin.goods.item.invalid": "Invalid data",
+        "admin.goods.item.invalid_id": "Invalid item ID",
+        "admin.goods.item.not_found": "Item not found",
+        "admin.goods.prompt.enter_item_name": "Enter the item name",
+        "admin.goods.menu.title": "⛩️ Items management menu",
+
+        # === Admin: Time-limited sales ===
+        "admin.goods.sale_manage": "🔥 Manage discount",
+        "admin.sale.prompt.name": "Enter the item name you want to set a discount for:",
+        "admin.sale.not_found": "❌ No item with that name was found.",
+        "admin.sale.current.active": "ℹ️ Current discount: <b>{percent}%</b> until <b>{until}</b> (UTC).",
+        "admin.sale.current.none": "ℹ️ This item currently has no discount.",
+        "admin.sale.prompt.percent": "Enter the discount percent (1–100).\nSend <b>0</b> to remove the discount.",
+        "admin.sale.percent.invalid": "⚠️ Invalid percent. Enter an integer from 0 to 100.",
+        "admin.sale.disabled": "✅ Discount for «{name}» has been removed.",
+        "admin.sale.prompt.days": "For how many days should the discount last? Enter an integer (e.g. 3).",
+        "admin.sale.days.invalid": "⚠️ Invalid duration. Enter an integer number of days greater than 0.",
+        "admin.sale.success": "✅ Discount <b>{percent}%</b> set for «{name}» until <b>{until}</b> (UTC).",
+
+        # === Admin: Goods / Items Update Flow ===
+        "admin.goods.update.amount.prompt.name": "Enter the item name",
+        "admin.goods.update.amount.not_exists": "❌ Unable to add values (item does not exist)",
+        "admin.goods.update.amount.infinity_forbidden": "❌ Unable to add values (this item is infinite)",
+        "admin.goods.update.values.result.title": "✅ Values added",
+        "admin.goods.update.position.invalid": "Item not found.",
+        "admin.goods.update.position.exists": "An item with this name already exists.",
+        "admin.goods.update.prompt.name": "Enter the item name",
+        "admin.goods.update.not_exists": "❌ Item cannot be updated (does not exist)",
+        "admin.goods.update.prompt.new_name": "Enter a new item name:",
+        "admin.goods.update.prompt.description": "Enter item description:",
+        "admin.goods.update.infinity.make.question": "Do you want to make the item infinite?",
+        "admin.goods.update.infinity.deny.question": "Do you want to disable infinity?",
+        "admin.goods.update.success": "✅ Item updated",
+
+        # === Admin: Goods / Items Delete Flow ===
+        "admin.goods.delete.prompt.name": "Enter the item name",
+        "admin.goods.delete.position.not_found": "❌ item not deleted (this item doesn't exist)",
+        "admin.goods.delete.position.success": "✅ item deleted",
+        "admin.goods.item.delete.button": "❌ Delete item",
+        "admin.goods.item.already_deleted_or_missing": "Item already deleted or not found",
+        "admin.goods.item.deleted": "✅ Item deleted",
+
+        # === Admin: Item Info ===
+        "admin.goods.item.info.position": "<b>Item</b>: <code>{name}</code>",
+        "admin.goods.item.info.price": "<b>Price</b>: <code>{price}</code> {currency}",
+        "admin.goods.item.info.id": "<b>Unique ID</b>: <code>{id}</code>",
+        "admin.goods.item.info.value": "<b>Product</b>: <code>{value}</code>",
+
+        # === Admin: Logs ===
+        "admin.shop.logs.caption": "Bot logs",
+        "admin.shop.logs.empty": "❗️ No logs yet",
+        "admin.shop.logs.too_large": "⚠️ Logs are too large to send ({files}) — grab them from disk.",
+
+        # === Group Notifications ===
+        "shop.group.new_upload": "New stock",
+        "shop.group.item": "Item",
+        "shop.group.count": "Quantity",
+
+        # === Admin: Statistics ===
+        "admin.shop.stats.template": (
+            "Shop statistics:\n"
+            "➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+            "<b>◽USERS</b>\n"
+            "◾️New in last 24h: {today_users}\n"
+            "◾️Total: {users}\n"
+            "◾️Buyers: {buyers}\n"
+            "◾️Blocked: {blocked}\n"
+            "➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+            "◽<b>FUNDS</b>\n"
+            "◾Sales in last 24h: {today_orders} {currency} ({today_sold_count} pcs)\n"
+            "◾Total sold: {all_orders} {currency}\n"
+            "◾Avg order: {avg_order} {currency}\n"
+            "◾Top-ups in last 24h: {today_topups} {currency}\n"
+            "◾Funds in system: {system_balance} {currency}\n"
+            "◾Total top-ups: {all_topups} {currency}\n"
+            "➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+            "◽<b>CATALOG</b>\n"
+            "◾In stock: {items} pcs\n"
+            "◾Positions: {goods} pcs\n"
+            "◾Categories: {categories} pcs\n"
+            "◾Sold: {sold_count} pcs"
+        ),
+        "admin.shop.stats.roles_header": "\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n◽<b>ROLES</b>",
+
+        # === Admin: Lists & Broadcast ===
+        "admin.shop.users.title": "Bot users:",
+        "admin.shop.bought.prompt_id": "Enter purchased item unique ID",
+        "admin.shop.bought.not_found": "❌ Item with given unique ID not found",
+        "broadcast.prompt": "Send a message to broadcast:",
+        "broadcast.creating": "📤 Starting the newsletter...\n👥 Total users: {ids}",
+        "broadcast.progress": (
+            "📤 Broadcasting in progress...\n\n"
+            "📊 Progress: {progress:.1f}%\n"
+            "✅ Sent: {sent}/{total}\n"
+            "❌ Errors: {failed}\n"
+            "⏱ Time elapsed: {time} sec"),
+        "broadcast.done": (
+            "✅ Broadcasting is complete! \n\n"
+            "📊 Statistics:📊\n"
+            "👥 Total: {total}\n"
+            "✅ Delivered: {sent}\n"
+            "❌ Undelivered: {failed}\n"
+            "🚫 Blocked bot: {blocked}\n"
+            "📈 Success rate: {success}%\n"
+            "⏱ Time: {duration} sec"
+        ),
+        "broadcast.cancel": "❌ The broadcast has been canceled.",
+        "broadcast.warning": "No active broadcast",
+        "broadcast.already_running": "⏳ A broadcast is already running. Wait for it to finish.",
+        "broadcast.btn.cancel": "🛑 Cancel broadcast",
+
+        # === Payments / Top-up Flow ===
+        "payments.replenish_prompt": "Enter top-up amount in {currency}:",
+        "payments.replenish_invalid": "❌ Invalid amount. Enter a number from {min_amount} to {max_amount} {currency}.",
+        "payments.deduct_prompt": "Enter deduction amount in {currency}:",
+        "payments.deduct_invalid": "❌ Invalid amount. Enter a number from {min_amount} to {max_amount} {currency}.",
+        "payments.method_choose": "Choose a payment method:",
+        "payments.not_configured": "❌ Top-ups are not configured",
+        "payments.session_expired": "Payment session has expired. Please start again.",
+        "payments.crypto.create_fail": "❌ Failed to create invoice: {error}",
+        "payments.crypto.api_error": "❌ CryptoPay API error: {error}",
+        "payments.crypto.check_fail": "❌ Payment check failed: {error}",
+        "payments.stars.create_fail": "❌ Failed to issue Stars invoice: {error}",
+        "payments.fiat.create_fail": "❌ Failed to issue invoice: {error}",
+        "payments.no_active_invoice": "❌ No active invoices found. Start top-up again.",
+        "payments.invoice_not_found": "❌ Invoice not found. Please start again.",
+        "payments.not_paid_yet": "⌛️ Payment is not completed yet.",
+        "payments.expired": "❌ Invoice has expired.",
+        "payments.invoice.summary": (
+            "💵 Top-up amount: {amount} {currency}.\n"
+            "⌛️ You have {minutes} minutes to pay.\n"
+            "<b>❗️ After paying, press «{button}»</b>"
+        ),
+        "payments.unable_determine_amount": "❌ Failed to determine the paid amount.",
+        "payments.topped_simple": "✅ Balance topped up by {amount} {currency}",
+        "payments.topped_with_suffix": "✅ Balance topped up by {amount} {currency} ({suffix})",
+        "payments.success_suffix.stars": "Telegram Stars",
+        "payments.success_suffix.tg": "Telegram P        "admin.roles.detail": "🛡 <b>Роль</b>: {name}\n📋 Права: {perms}\n👥 Пользователей: {users}",
         "admin.roles.prompt_name": "Введите название роли (макс. 64 символа):",
         "admin.roles.name_invalid": "⚠️ Некорректное название (пустое или длиннее 64 символов).",
         "admin.roles.name_exists": "❌ Роль с таким именем уже существует",
