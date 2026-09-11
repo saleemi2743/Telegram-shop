@@ -14,7 +14,7 @@ from bot.logger_mesh import logger
 from bot.database.methods.audit import log_audit
 from bot.database.methods.cache_utils import safe_create_task
 from bot.misc import EnvKeys, ItemPurchaseRequest, validate_telegram_id, validate_money_amount, PaymentRequest
-from bot.handlers.other import _any_payment_method_enabled, is_safe_item_name, caller_name
+from bot.handlers.other import is_safe_item_name, caller_name
 from bot.misc.metrics import get_metrics
 from bot.misc.services import CryptoPayAPI, CryptoPayAPIError, send_stars_invoice, send_fiat_invoice
 from bot.misc.services.payment import _minor_units_for, payload_amount
