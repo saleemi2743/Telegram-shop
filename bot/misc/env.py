@@ -3,7 +3,7 @@ import os
 from abc import ABC
 from typing import Final
 from urllib.parse import quote_plus
-
+from decimal import Decimal
 _env_logger = logging.getLogger(__name__)
 
 _DEFAULT_ADMIN_PASSWORD = "admin"
@@ -54,7 +54,7 @@ class EnvKeys(ABC):
     REFERRAL_PERCENT: Final = int(_get_optional("REFERRAL_PERCENT", "0"))
     PAY_CURRENCY: Final = _get_optional("PAY_CURRENCY", "RUB")
     PAYMENT_TIME: Final = int(_get_optional("PAYMENT_TIME", "1800"))
-    MIN_AMOUNT: Final = int(_get_optional("MIN_AMOUNT", "20"))
+    MIN_AMOUNT: Final = Decimal(_get_optional("MIN_AMOUNT", "0.01"))
     MAX_AMOUNT: Final = int(_get_optional("MAX_AMOUNT", "10000"))
 
     # Links / UI
