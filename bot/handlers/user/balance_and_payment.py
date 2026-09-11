@@ -1,5 +1,6 @@
 import hashlib
 import json
+import os
 from decimal import Decimal, ROUND_HALF_UP
 
 from aiogram import Router, F
@@ -46,44 +47,99 @@ async def _notify_referrer_bonus(bot, user_id: int, amount: Decimal | int, payer
 
 @router.callback_query(F.data == "replenish_balance")
 async def replenish_balance_callback_handler(call: CallbackQuery, state: FSMContext):
-    """Ask user for the amount if at least one payment method is enabled."""
-    if not _any_payment_method_enabled():
-        await call.answer(localize("payments.not_configured"), show_alert=True)
-        return
+    """Ask the customer to enter the amount for a manual Binance Pay deposit."""
 
     await call.message.edit_text(
-        localize("payments.replenish_prompt", currency=EnvKeys.PAY_CURRENCY),
-        reply_markup=back('profile')
+        "💳 <b>Binance Pay Deposit</b>\n\n"
+        f"Please enter the amount you want to deposit in "
+        f"{EnvKeys.PAY_CURRENCY}.\n\n"
+        f"Minimum amount: {EnvKeys.MIN_AMOUNT} {EnvKeys.PAY_CURRENCY}",
+        parse_mode="HTML",
+        reply_markup=back("profile"),
     )
+
     await state.set_state(BalanceStates.waiting_amount)
 
 
 @router.message(BalanceStates.waiting_amount, ValidAmountFilter())
 async def replenish_balance_amount(message: Message, state: FSMContext):
-    """Store amount and show payment methods."""
+    """Show manual Binance Pay instructions after validating the amount."""
+
     try:
-        # Validate amount using Pydantic
         amount = validate_money_amount(
             message.text,
             min_amount=Decimal(EnvKeys.MIN_AMOUNT),
-            max_amount=Decimal(EnvKeys.MAX_AMOUNT)
+            max_amount=Decimal(EnvKeys.MAX_AMOUNT),
         )
 
-        await state.update_data(amount=int(amount))
+        binance_pay_id = os.getenv("BINANCE_PAY_ID", "").strip()
+        admin_username = os.getenv("ADMIN_USERNAME", "").strip().lstrip("@")
+
+        if not binance_pay_id or not admin_username:
+            await message.answer(
+                "❌ Binance Pay is not configured.\n\n"
+                "Please contact the store administrator.",
+                reply_markup=back("profile"),
+            )
+            await state.clear()
+            return
+
+        payment_text = (
+            "💳 <b>Pay with Binance Pay</b>\n\n"
+            f"💰 Amount: <code>{amount}</code> "
+            f"{EnvKeys.PAY_CURRENCY}\n"
+            f"🆔 Binance Pay ID: <code>{binance_pay_id}</code>\n"
+            f"👤 Payment support: @{admin_username}\n\n"
+            "After completing the payment, send the following to the admin:\n\n"
+            "1. Payment screenshot\n"
+            "2. Binance transaction ID\n"
+            f"3. Amount paid: {amount} {EnvKeys.PAY_CURRENCY}\n"
+            f"4. Your Telegram ID: <code>{message.from_user.id}</code>\n\n"
+            "⚠️ Your balance will be added manually after payment verification."
+        )
+
+        from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+        keyboard = InlineKeyboardMarkup(
+            inline_keyboard=[
+                [
+                    InlineKeyboardButton(
+                        text="💳 Open Binance Pay",
+                        url="https://www.binance.com/en/my/wallet/account/payment",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="📨 Send Payment Receipt",
+                        url=f"https://t.me/{admin_username}",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="⬅️ Back to Profile",
+                        callback_data="profile",
+                    )
+                ],
+            ]
+        )
 
         await message.answer(
-            localize("payments.method_choose"),
-            reply_markup=get_payment_choice()
+            payment_text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
         )
-        await state.set_state(BalanceStates.waiting_payment)
+
+        await state.clear()
 
     except ValueError:
         await message.answer(
-            localize("payments.replenish_invalid",
-                     min_amount=EnvKeys.MIN_AMOUNT,
-                     max_amount=EnvKeys.MAX_AMOUNT,
-                     currency=EnvKeys.PAY_CURRENCY),
-            reply_markup=back('replenish_balance')
+            localize(
+                "payments.replenish_invalid",
+                min_amount=EnvKeys.MIN_AMOUNT,
+                max_amount=EnvKeys.MAX_AMOUNT,
+                currency=EnvKeys.PAY_CURRENCY,
+            ),
+            reply_markup=back("replenish_balance"),
         )
 
 
