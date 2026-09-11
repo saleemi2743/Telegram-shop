@@ -46,14 +46,19 @@ async def _notify_referrer_bonus(bot, user_id: int, amount: Decimal | int, payer
 
 
 @router.callback_query(F.data == "replenish_balance")
-async def replenish_balance_callback_handler(call: CallbackQuery, state: FSMContext):
-    """Ask the customer to enter the amount for a manual Binance Pay deposit."""
+async def replenish_balance_callback_handler(
+    call: CallbackQuery,
+    state: FSMContext
+):
+    """Start manual Binance Pay deposit."""
+
+    await call.answer()
 
     await call.message.edit_text(
         "💳 <b>Binance Pay Deposit</b>\n\n"
-        f"Please enter the amount you want to deposit in "
-        f"{EnvKeys.PAY_CURRENCY}.\n\n"
-        f"Minimum amount: {EnvKeys.MIN_AMOUNT} {EnvKeys.PAY_CURRENCY}",
+        f"Please enter the amount in {EnvKeys.PAY_CURRENCY}.\n\n"
+        f"Minimum: {EnvKeys.MIN_AMOUNT} {EnvKeys.PAY_CURRENCY}\n"
+        f"Maximum: {EnvKeys.MAX_AMOUNT} {EnvKeys.PAY_CURRENCY}",
         parse_mode="HTML",
         reply_markup=back("profile"),
     )
