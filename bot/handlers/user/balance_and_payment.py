@@ -50,9 +50,7 @@ async def replenish_balance_callback_handler(
     call: CallbackQuery,
     state: FSMContext
 ):
-    """Start manual Binance Pay deposit."""
-
-    await call.answer()
+    await call.answer("BINANCE HANDLER ACTIVE")
 
     await call.message.edit_text(
         "💳 <b>Binance Pay Deposit</b>\n\n"
@@ -64,7 +62,6 @@ async def replenish_balance_callback_handler(
     )
 
     await state.set_state(BalanceStates.waiting_amount)
-
 
 @router.message(BalanceStates.waiting_amount, ValidAmountFilter())
 async def replenish_balance_amount(message: Message, state: FSMContext):
