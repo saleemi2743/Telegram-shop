@@ -39,7 +39,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "rules.not_set": "❌ Rules have not been added",
 
         # === Profile ===
-        "btn.replenish": "💳 Top up your balance",
+        "btn.replenish": "💳 Pay with Binance",
         "btn.referral": "🎲 Referral system",
         "btn.purchased": "🎁 Purchased goods",
         "profile.referral_id": "👤 <b>Referral</b> — <code>{id}</code>",
@@ -322,7 +322,7 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "payments.replenish_invalid": "❌ Invalid amount. Enter a number from {min_amount} to {max_amount} {currency}.",
         "payments.deduct_prompt": "Enter deduction amount in {currency}:",
         "payments.deduct_invalid": "❌ Invalid amount. Enter a number from {min_amount} to {max_amount} {currency}.",
-        "payments.method_choose": "Choose a payment method:",
+        "payments.method_choose": "Pay manually through Binance Pay:",
         "payments.not_configured": "❌ Top-ups are not configured",
         "payments.session_expired": "Payment session has expired. Please start again.",
         "payments.crypto.create_fail": "❌ Failed to create invoice: {error}",
@@ -1095,7 +1095,14 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "payments.deduct_prompt": "Enter deduction amount in {currency}:",
         "payments.deduct_invalid": "❌ Invalid amount. Enter a number from {min_amount} to {max_amount} {currency}.",
         "payments.method_choose": "Choose a payment method:",
-        "payments.not_configured": "❌ Top-ups are not configured",
+        "payments.not_configured": (
+    "💳 <b>Binance Pay</b>\n\n"
+    "Pay ID: <code>569324195</code>\n"
+    "Currency: USDT\n\n"
+    "After payment, send the receipt, amount and your Telegram ID to "
+    "@techystoreowner.\n\n"
+    "Your balance will be credited after verification."
+),
         "payments.session_expired": "Payment session has expired. Please start again.",
         "payments.crypto.create_fail": "❌ Failed to create invoice: {error}",
         "payments.crypto.api_error": "❌ CryptoPay API error: {error}",
